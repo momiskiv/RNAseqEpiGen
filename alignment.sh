@@ -39,20 +39,16 @@ cd $SLURM_SUBMIT_DIR
 # Customise
 source /scratch/evo-epi/nm471/miniconda3/bin/activate alignment
 
-cd /scratch/evo-epi/nm471/dmagna_genome
-
 ### Genome prep 
 # D. magna genome = 161.5 Mb 
 STAR \
 --runThreadN 4 \
 --runMode genomeGenerate \
 --genomeDir ./ \
---genomeFastaFiles ./NIES_genomic.fa \ 
---sjdbGTFfile ./NIES_genomic.gff \
+--genomeFastaFiles ./NIES_genomic.fa \
+--sjdbGTFfile ./NIES_genomic.gtf \
 --sjdbOverhang 99 \
 --genomeChrBinNbits 15 
-
-cd /scratch/evo-epi/nm471/fastq_mine/trimfq
 
 ### Alignment
 for file in $(ls *_trim_1.fq.gz)
