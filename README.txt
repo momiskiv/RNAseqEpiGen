@@ -14,9 +14,10 @@
 AUTHOR: Naomi Musto
 TITLE: MBiolSci Biological Sciences (Genetics) specialised in Bioinformatics
 UNIVERSITY: University of Leicester, University Rd, Leicester, LE1 7RH
-DEPARTMENT: Genes, Genome, and Cancer Cells
+DEPARTMENT: Department of Genetics, Genomics and Cancer Sciences
 EMAIL: nm471@student.le.ac.uk
-SUPERVISOR: Dr Holly Marshall
+SECOND EMAIL: naomimusto.skiv@gmail.com
+SUPERVISOR: Dr Hollie Marshall
   ___     _           
  |_ _|_ _| |_ _ _ ___ 
   | || ' \  _| '_/ _ \
