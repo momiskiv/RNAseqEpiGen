@@ -6,7 +6,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=24
 #SBATCH --mem=80G
-#SBATCH --time=5:00:00
+#SBATCH --time=2:00:00
 #SBATCH --export=NONE
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=nm471@student.le.ac.uk
@@ -16,14 +16,18 @@
 # DNMT blast
 #-------------------------------------------------------------------
 
-# Generate conda env 
-# conda create -n agat_env
-# conda activate agat_env
-# conda install -c bioconda agat
+#Conda env
+source /scratch/evo-epi/nm471/miniconda3/etc/profile.d/conda.sh
+conda create -n agat_env
+conda activate agat_env
+conda install -c bioconda agat
 
 # Modules
 module load gcc/12.3.0-yxgv2bl
 module load blast-plus/2.13.0-5o3kbvq
+
+# AGAT PATH
+export PATH="/scratch/evo-epi/nm471/miniconda3/envs/agat_env/bin:$PATH"
 
 # Get protein seqs of all Dmagna genes
 agat_sp_extract_sequences.pl --gff NIES_genomic.gtf -f NIES_genome.fna -p -o dmagna_proteins.fa
@@ -60,7 +64,7 @@ parallel -j $SLURM_CPUS_PER_TASK blastp -query {}.fa -db dmagna_proteins.fa -eva
 echo "All BLAST searches completed."
 
 # Cleanup intermediates
-rm *.fa.pdb *.fa.pjs *.fa.pog *.fa.pos *.fa.ptf *fa.pto *.fna.index.dir *.fna.infex.pag *.agat.log
+rm *.fa.phr *.fa.pin *.fa.pot *.fa.psq *.fna.index.pag 
 
 
 
