@@ -1,3 +1,5 @@
+## Short code to create a matrix of all the count files to optimise DESeqObject creation
+
 import pandas as pd
 import glob
 
