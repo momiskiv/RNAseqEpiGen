@@ -46,9 +46,9 @@ The project's main aims are:
  |_|_\_|\_/_/ \_\  |___/\___\__, |
                                |_|
 
-WEEK 1 - WEEK 2 
+WEEK 1 - WEEK 2 - WEEK 3
 
-The first part of the project is analysing raw RNA-seq data.
+The first part of the project is analysing raw RNA-seq data (See RNA_seq directory).
 
 PIPELINE:
 
@@ -61,6 +61,34 @@ PIPELINE:
 3) Trimming adapters and poor-quality bases from sequence start.
 4) Using Conda, running RSEM genome preparation with STAR, then aligning the data to the NIES's Daphnia magna reference genome.
 5) Download counts, merge them into a matrix, and run DESeq script in R.
-6) Get significant (p=0.05) differentially expressed genes for each comparison. 
+6) Get significant (p=0.05) differentially expressed genes for each comparison (PvE, RvE, RvP) -- see DE_Analysis directory.
 
-Then, I performed a reciprocal BLAST search for DNMT1, DNMT3a and TET to find the gene names.
+Then, I performed a reciprocal BLAST search for DNMT1, DNMT3a and TET to find the gene names (see Reciprocal_BLAST directory).
+Main results:
+- DNMT1 = Daphnia magna DNA (cytosine-5)-methyltransferase 1, (LOC116925494) from variants X1-3
+- DNMT3a = Daphnia magna DNA (cytosine-5)-methyltransferase 3B (LOC116922472 and LOC116923817) from variants X1,2 and 8
+- TET = Daphnia magna DNA N6-methyl adenine demethylase (LOC116917382) from variants X1-3
+
+I was unsure about the results I got from DNMT3a, but it appears that it is highly similar to DNMT3b.
+When trying to plot the identified genes, there were not present in any of the differentially expressed genes in the three comparisons. DNMT1 was barely expressed, with just a handful of samples having around 2-3 counts of the gene. DNMT3b variants X1-2 had no expression at all, while variant X8 had relatively higher expression than the previous (max of 38 counts). TET, on the other hand, had mostly low expression (3-11 counts), with the highest count being 43. However, in respect to the rest of the expressed genes within the analysis, these counts are incredibly small and not statistically powerful to extract any conclusions. 
+On a more positive note, there seems to be an equal amount of isoforms of DNMTs as found in the literature(Chaturverdi et al., 2023), despite using different genome assemblies (they used LRV0_1, while I am using NIES).
+
+   ___  ___      ___          _    _                  _       _             _         _    
+  / __|/ _ \ ___| __|_ _  _ _(_)__| |_  _ __  ___ _ _| |_    /_\  _ _  __ _| |_  _ __(_)___
+ | (_ | (_) |___| _|| ' \| '_| / _| ' \| '  \/ -_) ' \  _|  / _ \| ' \/ _` | | || (_-< (_-<
+  \___|\___/    |___|_||_|_| |_\__|_||_|_|_|_\___|_||_\__| /_/ \_\_||_\__,_|_|\_, /__/_/__/
+                                                                              |__/         
+
+WEEK 4
+
+After spending some time exploring the relevant literature surrounding D. magna and temporal population studies, I attempted a GO enrichment analysis using the differentially expressed gene data from my RNA-seq final analysis in combination with the gene ontology data released by NIES.
+
+PIPELINE (see GO_enrichment_analysis):
+1) Created a dataframe from the gene ontology file from NIES containing GID, GO, EVIDENCE, as well as as another dataframe with the relevant gene information (GID and SYMBOL).
+2) Created a custom D. magna database using the makeOrgPackage function.
+3) Extracted gene names from the objects containing significantly differentially expressed genes across the comparisons. 
+4) Performed an enrichGO for biological processes (PvE and RvE = p-value cutoff: 0.01, q-value cutoff: 0.05; RvP = p-value cutoff: 0.2, q-value cutoff: 1), plotted the results and saved dataframe as csv for later use. 
+
+RvP turned to be a quite weak comparison, which aligns with the RNA-seq data. As for the other two, they provided quite interesting results!
+- PvE: Most differentially expressed genes were correlated ot translation, cytoplasmic translation and ribosomal biogenesis).
+- RvE: Most differentially expressed genes were also related to translation, cytoplasmic translation and ribosomal biogenesis, but there were most genes involved in lipi transport and localisation.
