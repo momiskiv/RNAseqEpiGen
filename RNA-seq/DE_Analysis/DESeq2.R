@@ -319,7 +319,8 @@ head(res_RvE_ordered)
 res_RvE_ordered<-as.data.frame(res_RvE_ordered)
 res_RvE_ordered$gene<-rownames(res_RvE_ordered)
 rownames(res_RvE_ordered)<-c()
-write.table(as.data.frame(res_RvE_ordered), file="diff_exp_output_log2FC_all_genes_RvE.tsv",
+write.table(as.data.frame(res_RvE_ordered),
+            file="diff_exp_output_log2FC_all_genes_RvE.tsv",
             sep="\t", quote = F, col.names = T, row.names = F)
 
 # out of 1760 with nonzero total read count
@@ -331,6 +332,10 @@ nrow(res_RvE_significant) # 68 total differentially expressed genes
 nrow(res_RvE_significant[res_RvE_significant$log2FoldChange > 1.5,]) #64 upregulated in recovery
 nrow(res_RvE_significant[res_RvE_significant$log2FoldChange < -1.5,]) #4 upregulated in eutrophic
 
+write.table(as.data.frame(res_RvE_significant),
+            file="sign_diffexp_RvE.tsv",
+            sep="\t", quote = F, col.names = NA, row.names=T)
+
 #RvP
 res_RvP_significant<- subset(res_rec_v_pes, log2FoldChange > 1.5 | log2FoldChange < -1.5)
 res_RvP_significant <- subset(res_RvP_significant, padj < 0.05)
@@ -338,12 +343,20 @@ nrow(res_RvP_significant) # 78 total differentially expressed genes
 nrow(res_RvP_significant[res_RvP_significant$log2FoldChange > 1.5,]) #53 upregulated in recovery
 nrow(res_RvP_significant[res_RvP_significant$log2FoldChange < -1.5,]) #25 upregulated in eutrophic
 
+write.table(as.data.frame(res_RvE_significant),
+            file="sign_diffexp_RvP.tsv",
+            sep="\t", quote = F, col.names = NA, row.names=T)
+
 #PvE
 res_PvE_significant<- subset(res_pes_v_eut, log2FoldChange > 1.5 | log2FoldChange < -1.5)
 res_PvE_significant <- subset(res_PvE_significant, padj < 0.05)
 nrow(res_PvE_significant) # 150 total differentially expressed genes
 nrow(res_PvE_significant[res_PvE_significant$log2FoldChange > 1.5,]) # 90 upregulated in recovery
 nrow(res_PvE_significant[res_PvE_significant$log2FoldChange < -1.5,]) # 60 upregulated in eutrophic
+
+write.table(as.data.frame(res_RvE_significant),
+            file="sign_diffexp_PvE.tsv",
+            sep="\t", quote = F, col.names = NA, row.names=T)
 
 #------------------------------------------------------------------
 
