@@ -90,5 +90,7 @@ PIPELINE (see GO_enrichment_analysis):
 4) Performed an enrichGO for biological processes (PvE and RvE = p-value cutoff: 0.01, q-value cutoff: 0.05; RvP = p-value cutoff: 0.2, q-value cutoff: 1), plotted the results and saved dataframe as csv for later use. 
 
 RvP turned to be a quite weak comparison, which aligns with the RNA-seq data. As for the other two, they provided quite interesting results!
-- PvE: Most differentially expressed genes were correlated ot translation, cytoplasmic translation and ribosomal biogenesis).
+- PvE: Most differentially expressed genes were correlated ot translation, cytoplasmic translation and ribosomal biogenesis.
 - RvE: Most differentially expressed genes were also related to translation, cytoplasmic translation and ribosomal biogenesis, but there were most genes involved in lipi transport and localisation.
+
+ANALYSIS IS FINALLY COMPLETE! I will focus on completing the writing for chapter one, and I will update shortly once I have made a start on the second part of my project.
