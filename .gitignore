@@ -5,5 +5,5 @@
 .Ruserdata
 
 # Data is too large to add to repo
-GO_enrichment_analysis/org.Dmagna.eg.db/
+./GO_enrichment_analysis/org.Dmagna.eg.db/
 
