@@ -4,4 +4,5 @@
 .RData
 .Ruserdata
 
+# Directories
 GO_enrichment_analysis/org.Dmagna.eg.db/
