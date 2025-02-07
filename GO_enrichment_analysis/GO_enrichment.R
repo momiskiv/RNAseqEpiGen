@@ -1,4 +1,5 @@
 # GO enrichment analysis 
+# Based on tutorial by Sanbomics: https://www.youtube.com/watch?v=JPwdqdo_tRg
 
 setwd("/home/nm471/final_project/github/GO_enrichment_analysis/")
 

@@ -1,0 +1,13 @@
+Package: org.Dmagna.eg.db
+Title: Genome wide annotation for Daphnia magna
+Description: Genome wide annotation for Daphnia magna, primarily based on mapping using Entrez Gene identifiers.
+Version: 0.3
+Author: Naomi Musto <nm471@student.le.ac.uk>
+Maintainer: Naomi Musto <nm471@student.le.ac.uk>
+Depends: R (>= 2.7.0), methods, AnnotationDbi (>= 1.68.0)
+Suggests: DBI, annotate, RUnit
+License: Artistic-2.0
+organism: Daphnia magna
+species: Daphnia magna
+biocViews: OrgDb, annotation
+
