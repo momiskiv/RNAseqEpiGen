@@ -82,6 +82,7 @@ On a more positive note, there seems to be an equal amount of isoforms of DNMTs 
 WEEK 4
 
 After spending some time exploring the relevant literature surrounding D. magna and temporal population studies, I attempted a GO enrichment analysis using the differentially expressed gene data from my RNA-seq final analysis in combination with the gene ontology data released by NIES.
+I followed a brilliant tutorial by Sanbomics: https://www.youtube.com/watch?v=JPwdqdo_tRg
 
 PIPELINE (see GO_enrichment_analysis):
 1) Created a dataframe from the gene ontology file from NIES containing GID, GO, EVIDENCE, as well as as another dataframe with the relevant gene information (GID and SYMBOL).
