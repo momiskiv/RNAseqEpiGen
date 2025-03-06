@@ -38,7 +38,7 @@ The project's main aims are:
  * Analysis of RNA-seq data to assess expression of DNMT1 and DNMT3a homologs in different temporal populations of D. magna. 
  * Reciprocal BLAST to identify TET, another gene involved in DN methylation.
  * Gene Ontology analysis of the differentially expressed genes between the temporal populations.
- * Machine learning subproject using the methylation data to predict phenotype.
+ * Machine learning subproject using the methylation data to predict pollutants (biomarker hypothesis).
 
   ___ _  _   _      ___           
  | _ \ \| | /_\ ___/ __| ___ __ _ 
@@ -95,3 +95,30 @@ RvP turned to be a quite weak comparison, which aligns with the RNA-seq data. As
 - RvE: Most differentially expressed genes were also related to translation, cytoplasmic translation and ribosomal biogenesis, but there were most genes involved in lipi transport and localisation.
 
 ANALYSIS IS FINALLY COMPLETE! I will focus on completing the writing for chapter one, and I will update shortly once I have made a start on the second part of my project.
+
+
+  ___  _  __  __                 _   _      _   __  __     _   _        _      _   _          
+ |   \(_)/ _|/ _|___ _ _ ___ _ _| |_(_)__ _| | |  \/  |___| |_| |_ _  _| |__ _| |_(_)___ _ _  
+ | |) | |  _|  _/ -_) '_/ -_) ' \  _| / _` | | | |\/| / -_)  _| ' \ || | / _` |  _| / _ \ ' \ 
+ |___/|_|_| |_| \___|_| \___|_||_\__|_\__,_|_| |_|  |_\___|\__|_||_\_, |_\__,_|\__|_\___/_||_|
+                                                                   |__/                       
+
+WEEK 8
+
+There are about 3 weeks left until the end of the project. Dr Marshall and I agreed to start on the possible machine learning aspect of the project.
+In order to do so, I observed if there were differentially methylated genomic regions using methylKit. 
+
+PIPELINE (see Diff_Meth):
+1) Gather the coverage files; they have been pre-processed by Dr Marshall.
+2) Filter data to include only CpGs found within the pairwise comparison.
+3) Perform binomial testing. 
+4) Only retain regions that show methylation in at least one sample.
+5) Perform PCA analysis, and generate PCA plots and Scree plots for observing component contributions.
+6) Perform differential methylation analysis of CpG islands (difference = 15, qvalue = 0.1).
+
+For the machine learning input, I have performed almost the same process:
+1) ".
+2) Filter data to only include CpG found across all populations (120,863).
+3) ".
+4) " (3,002).
+5) Use 'percMethylation' to gather the percent methylation scores.
