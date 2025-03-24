@@ -122,3 +122,31 @@ For the machine learning input, I have performed almost the same process:
 3) ".
 4) " (3,002).
 5) Use 'percMethylation' to gather the percent methylation scores.
+
+
+  __  __         _    _            _                      _           
+ |  \/  |__ _ __| |_ (_)_ _  ___  | |   ___ __ _ _ _ _ _ (_)_ _  __ _ 
+ | |\/| / _` / _| ' \| | ' \/ -_) | |__/ -_) _` | '_| ' \| | ' \/ _` |
+ |_|  |_\__,_\__|_||_|_|_||_\___| |____\___\__,_|_| |_||_|_|_||_\__, |
+                                                                |___/ 
+
+WEEK 9 - 10 - 11
+
+With just a couple of weeks left, I am dedicating the final efforts to implementing my original idea for the project.
+
+(1)
+With the information gathered from the differential methylation analysis, I will be now associating the levels of specific chemical pollutants with the respective percMeth of each sample.
+In order to do this, I received the information of different levels of chemical pollutants (insecticide, pesticide, fungicide, herbicide) and their year. I then used this to associate the sample year with the pollutant value.
+Some of the samples had a perfect temporal match, but in case the year did not match, I took an average of the two closest dates. Moreover, as the pollutant data begins from 1956, I omitted samples from earlier than this (1952 samples).
+
+(2)
+Used a new Python script to create a new dataset in the required format, excluding the sample names as they will not be relevant for ML training purposes.
+Each pollutant has its own dataset now: pollutant levels, CpG island methylation levels and populations.
+
+(3)
+I was given the good-to-go to work on Dr Eamonn Mallon's epigenetic clock script. I started with it as a base, using Elastic Net regression model for the prediction.
+After making sure the script could predict pollutant levels for one of the pollutants, I gathered data for all the other pollutants manually. I realised it was quite time consuming...
+
+(4)
+I optimised the script to its (current) full potential, making it so the user could specify the pollutant they want to work with, and the script will adapt thanks to a function.
+All the work saves in the corresponding sub-directory. I am quite happy with the extent of the script!
