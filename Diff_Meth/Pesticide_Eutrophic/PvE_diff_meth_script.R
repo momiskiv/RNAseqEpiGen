@@ -152,7 +152,7 @@ ggplot(PCA_data1, aes(PC1, PC2, colour=Condition))+
         title=element_text(size=26))+
   ggtitle("Pesticide v Eutrophic")
 
-# SCREE PLOT #
+# SCREE PLOT #\
 
 eigenvalues <- PCA_data$sdev^2
 percentage <- round(eigenvalues / sum(eigenvalues) * 100, 1)
@@ -160,7 +160,7 @@ percentage <- round(eigenvalues / sum(eigenvalues) * 100, 1)
 df <- data.frame(PC = factor(seq_along(eigenvalues)), Eigenvalue = eigenvalues)
 
 ggplot(df, aes(x = PC, y = Eigenvalue)) +
-  geom_bar(stat = "identity", fill = "skyblue", alpha = 0.7) +  
+  geom_bar(stat = "identity", fill = "skyblue", alpha = 0.7) +
   geom_line(aes(group = 1), color = "blue", size = 1) +        
   geom_point(color = "blue", size = 2) +                   
   labs(title = "PvE Scree Plot",
