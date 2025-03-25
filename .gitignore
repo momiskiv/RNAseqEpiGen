@@ -7,3 +7,6 @@
 # Directories
 GO_enrichment_analysis/org.Dmagna.eg.db/
 Diff_Meth/Coverage_Files/
+
+# Files
+GO_enrichment_analysis/Differential_Meth_Enrichment/NIES_gene_ontology.gaf
