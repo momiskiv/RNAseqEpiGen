@@ -150,3 +150,24 @@ After making sure the script could predict pollutant levels for one of the pollu
 (4)
 I optimised the script to its (current) full potential, making it so the user could specify the pollutant they want to work with, and the script will adapt thanks to a function.
 All the work saves in the corresponding sub-directory. I am quite happy with the extent of the script!
+
+So, is the ML efficient in prediction? Here are the statistics:
+#FUNGICIDE#
+[1] "MAE: 19285.7017378919"
+[1] "RMSE: 23631.1905477161"
+[1] "R²: 0.99985716469986"
+
+#INSECTICIDE#
+[1] "MAE: 3373.07528798899"
+[1] "RMSE: 3687.23851000071"
+[1] "R²: 0.999840567760462"
+
+#PESTICIDE#
+[1] "MAE: 15.4760720696581"
+[1] "RMSE: 18.2794210557097"
+[1] "R²: 0.999830437899091"
+
+#HERBICIDE#
+[1] "MAE: 28211.9528583404"
+[1] "RMSE: 32135.6295366993"
+[1] "R²: 0.999858913289966"
