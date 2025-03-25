@@ -1,9 +1,10 @@
 library(readr)
 library(GenomicRanges)
+library(stringr)
 
 setwd("~/final_project/github/Diff_Meth")
 
-methylation_data <- read_csv("./Recovery_Pesticide/diff_meth_RvP.csv")
+methylation_data <- read_csv("./Recovery_Eutrophic/diff_meth_RvE.csv")
 
 gff_data <- read.table("NIES_genome.gff",
                        header = FALSE,
@@ -33,20 +34,33 @@ methylation_gr <- GRanges(
   strand = methylation_data$strand
 )
 
+#Filtering for just gene features
+gff_genes <- gff_data[gff_data$type == "gene", ]
+
 #Convert GFF data to GRanges object
-gff_gr <- GRanges(
-  seqnames = gff_data$seqid,
-  ranges = IRanges(start = gff_data$start, end = gff_data$end),
-  strand = gff_data$strand
+gff_genes_gr <- GRanges(
+  seqnames = gff_genes$seqid,
+  ranges = IRanges(start = gff_genes$start, end = gff_genes$end),
+  strand = gff_genes$strand
 )
 
 # Find overlaps between methylation regions and GFF data
-overlaps <- findOverlaps(methylation_gr, gff_gr)
+overlaps <- findOverlaps(methylation_gr, gff_genes_gr)
 
 # Extract overlapping features
-overlapping_features <- gff_data[subjectHits(overlaps), ]
+overlapping_genes <- gff_genes[subjectHits(overlaps), ]
 
-# Display overlapping features
-print(overlapping_features)
+# Display overlapping genes
+head(overlapping_genes)
 
-write.csv(overlapping_features, file = "sign_diff_meth_features.csv")
+write.csv(overlapping_genes, file = "RvE_sign_diff_meth_gene_features.csv")
+
+#Extract names from attribute column
+overlapping_genes$symbol <- str_extract(overlapping_genes$attributes, "(?<=Name=)[^;]+")
+
+#Add to new df
+diffmeth_genes <- data.frame(
+  symbol = overlapping_genes$symbol,
+  seqid = overlapping_genes$seqid)
+
+write.csv(diffmeth_genes, file = "RvE_sign_diff_meth_genes.csv", row.names = FALSE)
