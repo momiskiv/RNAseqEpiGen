@@ -171,3 +171,6 @@ So, is the ML efficient in prediction? Here are the statistics:
 [1] "MAE: 28211.9528583404"
 [1] "RMSE: 32135.6295366993"
 [1] "R²: 0.999858913289966"
+
+The units for the fungicide, insecticide and herbicide are very high, while the values for pesticides are not as much.
+It's important to keep in mind to understand these results. All of the data was scaled during the training.
